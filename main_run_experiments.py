@@ -1,9 +1,6 @@
 import ray
-from proj_functions import SpectralDirectSameInit, OldResultsRemover
-from MyLibrary import TrialTerminationReporter
+from proj_functions import SpectralDirectSameInit, OldResultsRemover, TrialTerminationReporter
 from ray import tune
-
-
 
 
 """

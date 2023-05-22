@@ -7,6 +7,8 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from math import floor, exp
 import yaml
+from ray.tune.progress_reporter import CLIReporter, Trial
+import fnmatch
 
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 os.environ['CUDA_VISIBLE_DEVICES'] = '0'
@@ -22,11 +24,9 @@ from tensorflow.keras.models import Model, load_model, clone_model
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.utils import get_custom_objects
 from tensorflow.keras.initializers import Initializer
-
 from typing import Callable
 from customspectral import Spectral
 import numpy as np
-from MyLibrary import find
 from ray.tune.integration.keras import TuneReportCallback
 from ray.tune import report
 
@@ -801,6 +801,21 @@ def OldResultsRemover(trial_info: dict):
         print('No old results to remove')
 
 
+class TrialTerminationReporter(CLIReporter):
+    """
+    Tune reporter that reports only on trial termination events.
+    """
+    def __init__(self):
+        super(TrialTerminationReporter, self).__init__()
+        self.num_terminated = 0
+
+    def should_report(self, trials, done=False):
+        """Reports only on trial termination events."""
+        old_num_terminated = self.num_terminated
+        self.num_terminated = len([t for t in trials if t.status == Trial.TERMINATED])
+        return self.num_terminated > old_num_terminated
+
+
 def SpectralDirectSameInit(trial_info: dict | str,
                            plot_loss: bool = False,
                            save_results: bool = False,
@@ -959,3 +974,12 @@ def FlattenList(l: list):
     :return: The single flattened list
     """
     return [item for sublist in l for item in sublist]
+
+
+def find(pattern, path):
+    result = []
+    for root, dirs, files in os.walk(path):
+        for name in files:
+            if fnmatch.fnmatch(name, pattern):
+                result.append(os.path.join(root, name))
+    return result
