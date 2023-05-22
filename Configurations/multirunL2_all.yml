@@ -1,0 +1,53 @@
+Global:
+  results_folder : 'L2Comparison'
+  experiment_name : 'L2_all'
+  teacher : 'neural_network'
+
+
+Student Layer 1:
+  Common:
+    units : 50
+    activation : 'relu'
+    use_bias : False
+    diag_end_initializer : 'ones'
+
+  Spectral:
+    name: 'Spectral1'
+    is_diag_end_trainable : True
+    diag_regularizer : 'l2'
+    is_base_trainable : True
+    base_regularizer : 'l2'
+
+  Direct:
+    name: 'Direct1'
+    is_diag_end_trainable : False
+    diag_regularizer : 'l2'
+    is_base_trainable : True
+    base_regularizer : 'l2'
+
+Compile:
+  Common:
+    loss: 'MSE'
+    metrics: ['MSE']
+
+  Spectral:
+    learning_rate : 0.005
+
+  Direct:
+    learning_rate : 0.002
+
+Training:
+  Common:
+    epochs : 2000
+
+  Spectral:
+    batch_size : 300
+
+  Direct:
+    batch_size : 500
+
+Dataset:
+  input_dim : 10
+  patterns : 10000
+  teacher : 'neural_network'
+  teacher_hidden: 20
