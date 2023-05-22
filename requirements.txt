@@ -1,9 +1,8 @@
 googledrivedownloader==0.4
+tensorflow==2.10.1
 matplotlib==3.6.2
-MyLibrary==0.0.6
 numpy==1.23.5
 pandas==1.5.2
 PyYAML==6.0
-ray==3.0.0
+ray[tune]
 seaborn==0.12.2
-tensorflow==2.10.1
