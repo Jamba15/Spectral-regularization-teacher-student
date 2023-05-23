@@ -2,6 +2,8 @@
 This repository containts the code capable of reproducing the results of the paper **How a student becomes a teacher:
 learning and forgetting through Spectral methods** by *L.Giambagli, L.Buffoni, L.Chicchi, D.Fanelli*.
 
+To install all dependencies run `pip install -r requirements.txt`
+
 ### Plot the results
 To plot the result in the paper run the python file `main_results.py`. The code contains three different section that 
 can be commented depending on the desired results. More specifically, the *first section* reproduces the histograms of the
