@@ -8,7 +8,7 @@ if not exists('./Results'):
     print('Results folder not found, downloading from google drive')
     # Download the results shown in the paper from the google drive and create the Results folder
     gdd.download_file_from_google_drive(file_id='1twujBUYvS7lhzu_LrOlUeDQ6qk24ABw6',
-                                        dest_path='./Results/L2_all.zip',
+                                        dest_path='./Results/L2Comparison/L2_all.zip',
                                         unzip=True)
 else:
     print('Pre-existing Results folder found')
