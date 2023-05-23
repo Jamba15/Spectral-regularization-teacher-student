@@ -13,8 +13,8 @@ The *second section* reproduces the plots of the average dimension of the studen
 runs, again, over the 30 trials.
 
 ### Run new experiments
-The file `run_experiments.py` contains the code to run the experiments for the different student hidden layer sizes basing
-on the configuration file `config.json`. The results are always saved in the folder `Results` with subdirectory structure 
+The file `main_run_experiments.py` contains the code to run the experiments for the different student hidden layer sizes basing
+on the configuration file `Configurations/config.json`. The results are always saved in the folder `Results` with subdirectory structure 
 given in the configuration.
 
 ### 
