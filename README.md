@@ -4,6 +4,9 @@ learning and forgetting through Spectral methods** by *L.Giambagli, L.Buffoni, L
 
 To install all dependencies run `pip install -r requirements.txt`
 
+The so called Spectral Layer and the Structural Pruning functions employed can be installed using `pip install spectraltools`. 
+For further details go to [SpectralTools](https://github.com/Jamba15/SpectralTools) GitHub page.
+
 ### Plot the results
 To plot the result in the paper run the python file `main_results.py`. The code contains three different section that 
 can be commented depending on the desired results. More specifically, the *first section* reproduces the histograms of the
